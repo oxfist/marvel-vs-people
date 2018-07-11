@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SuperheroTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @superhero = Superhero.new(
       name: 'Spider-Man',
       character_id: 12341234

@@ -1,3 +1,6 @@
+Person.delete_all
+Superhero.delete_all
+
 Person.create!(
   [
     {

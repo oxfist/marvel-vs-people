@@ -1,0 +1,23 @@
+<h2><%= @superhero.name %></h2>
+<p><%= @superhero.description %></p>
+
+<h2>Comics</h2>
+<ol>
+<% @superhero.comics.items.each do |comic| %>
+  <li><%= comic.name %></li>
+<% end %>
+</ol>
+
+<h2>Series</h2>
+<ol>
+<% @superhero.series.items.each do |series| %>
+  <li><%= series.name %></li>
+<% end %>
+</ol>
+
+<h2>Events</h2>
+<ol>
+<% @superhero.events.items.each do |event| %>
+  <li><%= event.name %></li>
+<% end %>
+</ol>

@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
+gem 'marvel_api'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
@@ -19,7 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'hashie'
   gem 'minitest-reporters'
+  gem 'minitest-stub_any_instance'
   gem 'pry-byebug'
   gem 'pry-rails'
 end

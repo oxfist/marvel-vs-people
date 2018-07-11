@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Superheroes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Character ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @superheroes.each do |superhero| %>
+      <tr>
+        <td><%= superhero.name %></td>
+        <td><%= superhero.character_id %></td>
+        <td><%= link_to 'Show', superheroes_show_path(character_id: superhero.character_id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

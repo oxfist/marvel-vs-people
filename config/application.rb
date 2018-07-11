@@ -8,12 +8,11 @@ Bundler.require(*Rails.groups)
 
 module MarvelVsPeople
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    marvel_client = Marvel::Client.new
+    marvel_client.api_key = '720411e44edb8fe18f5f6061ada61d8e'
+    marvel_client.private_key = '65be946f16213b54e48025d9cc45e3f335d7541b'
+    config.marvel_client = marvel_client
   end
 end

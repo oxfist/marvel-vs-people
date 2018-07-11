@@ -3,6 +3,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/autorun'
 require 'minitest/reporters'
+require 'minitest/stub_any_instance'
 
 Minitest::Reporters.use!
 

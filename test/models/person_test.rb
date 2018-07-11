@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @person = Person.new(
       name: 'Alan Turing',
       occupation: 'Mathematics professor',
