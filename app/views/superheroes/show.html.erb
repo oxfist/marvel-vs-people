@@ -1,4 +1,7 @@
 <h2><%= @superhero.name %></h2>
+<img class="img-thumbnail w-25"
+     src=<%= "#{@superhero.thumbnail.path}.#{@superhero.thumbnail.extension}" %>
+/>
 <p><%= @superhero.description %></p>
 
 <h2>Comics</h2>

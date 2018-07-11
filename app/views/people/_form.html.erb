@@ -11,27 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: 'col-form-label col-sm-2' %>
+    <div class="col-sm-5">
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :occupation %>
-    <%= form.text_field :occupation %>
+  <div class="form-group row">
+    <%= form.label :occupation, class: 'col-form-label col-sm-2' %>
+    <div class="col-sm-5">
+      <%= form.text_field :occupation, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :quote %>
-    <%= form.text_area :quote %>
+  <div class="form-group row">
+    <%= form.label :quote, class: 'col-form-label col-sm-2' %>
+    <div class="col-sm-5">
+      <%= form.text_area :quote, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :special_ability %>
-    <%= form.text_field :special_ability %>
+  <div class="form-group row">
+    <%= form.label :special_ability, class: 'col-form-label col-sm-2' %>
+    <div class="col-sm-5">
+      <%= form.text_field :special_ability, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="col-sm-5">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
