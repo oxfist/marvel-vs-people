@@ -17,7 +17,15 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create person' do
     assert_difference('Person.count') do
-      post people_url, params: { person: { name: @person.name, occupation: @person.occupation, quote: @person.quote, special_ability: @person.special_ability } }
+      post people_url,
+           params: {
+             person: {
+               name: @person.name,
+               occupation: @person.occupation,
+               quote: @person.quote,
+               special_ability: @person.special_ability
+             }
+           }
     end
 
     assert_redirected_to person_url(Person.last)
@@ -34,7 +42,15 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update person' do
-    patch person_url(@person), params: { person: { name: @person.name, occupation: @person.occupation, quote: @person.quote, special_ability: @person.special_ability } }
+    patch person_url(@person),
+          params: {
+            person: {
+              name: @person.name,
+              occupation: @person.occupation,
+              quote: @person.quote,
+              special_ability: @person.special_ability
+            }
+          }
     assert_redirected_to person_url(@person)
   end
 
@@ -44,5 +60,23 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to people_url
+  end
+
+  test 'should revive person' do
+    @person.update(defeated: true)
+
+    post revive_people_url(@person)
+
+    @person.reload
+    refute @person.defeated
+  end
+
+  test 'should revive all people' do
+    Person.update_all(defeated: true)
+    assert_equal 0, Person.where(defeated: false).count
+
+    post revive_people_url
+
+    assert_equal 0, Person.where(defeated: true).count
   end
 end

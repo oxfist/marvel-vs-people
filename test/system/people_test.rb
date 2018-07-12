@@ -46,4 +46,13 @@ class PeopleTest < ApplicationSystemTestCase
 
     assert_text 'Person was successfully destroyed'
   end
+
+  test 'reviving a Person' do
+    visit people_url
+    page.accept_confirm do
+      click_on 'Revive', match: :first
+    end
+
+    assert_text(/.*was revived/)
+  end
 end
