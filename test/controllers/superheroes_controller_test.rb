@@ -3,14 +3,6 @@ require 'test_helper'
 class SuperheroesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @superhero = superheroes(:one)
-    @res = [
-      Hashie::Mash.new(
-        name: @superhero.name,
-        comics: { items: [{ name: 'Best comic ever' }] },
-        series: { items: [{ name: 'Best series ever' }] },
-        events: { items: [{ name: 'Best event ever' }] }
-      )
-    ]
   end
 
   test 'should get index' do
@@ -19,7 +11,7 @@ class SuperheroesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show superhero' do
-    Marvel::Client.stub_any_instance(:character, @res) do
+    Marvel::Client.stub_any_instance(:character, MARVEL_API_FIXED_RESPONSE) do
       get superheroes_show_url(character_id: @superhero.character_id)
       assert_response :success
     end

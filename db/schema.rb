@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_033518) do
+ActiveRecord::Schema.define(version: 2018_07_12_180733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "person_id", null: false
+    t.bigint "superhero_id", null: false
+    t.boolean "person_won"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "round_id", null: false
+    t.index ["person_id"], name: "index_matches_on_person_id"
+    t.index ["round_id"], name: "index_matches_on_round_id"
+    t.index ["superhero_id"], name: "index_matches_on_superhero_id"
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +34,12 @@ ActiveRecord::Schema.define(version: 2018_07_11_033518) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "special_ability", null: false
+    t.boolean "defeated", default: false, null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "superheroes", force: :cascade do |t|
@@ -29,6 +47,10 @@ ActiveRecord::Schema.define(version: 2018_07_11_033518) do
     t.integer "character_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "fought", default: false, null: false
   end
 
+  add_foreign_key "matches", "people", on_delete: :cascade
+  add_foreign_key "matches", "rounds"
+  add_foreign_key "matches", "superheroes"
 end

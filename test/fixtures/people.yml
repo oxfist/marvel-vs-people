@@ -5,9 +5,11 @@ one:
   occupation: MyString
   quote: MyText
   special_ability: MyString
+  defeated: false
 
 two:
   name: MyString
   occupation: MyString
   quote: MyText
   special_ability: MyString
+  defeated: false

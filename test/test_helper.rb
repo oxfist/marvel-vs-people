@@ -8,8 +8,15 @@ require 'minitest/stub_any_instance'
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  MARVEL_API_FIXED_RESPONSE = [
+    Hashie::Mash.new(
+      name: 'MyString',
+      thumbnail: { path: '/favicon', extension: 'ico' },
+      comics: { items: [{ name: 'Best comic ever' }] },
+      series: { items: [{ name: 'Best series ever' }] },
+      events: { items: [{ name: 'Best event ever' }] }
+    )
+  ].freeze
 end

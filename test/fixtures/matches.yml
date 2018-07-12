@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: one
+  superhero: one
+  person_won: false
+  round: one
+
+two:
+  person: two
+  superhero: two
+  person_won: false
+  round: one

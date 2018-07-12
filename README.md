@@ -1,3 +1,3 @@
-# Marvel vs People
+# Marvel vs. People
 
 TODO: write instructions

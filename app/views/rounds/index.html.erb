@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pb-3">Rounds</h1>
+
+<%= button_to 'Run round', '/new_round', class: 'btn btn-primary mb-3' %>
+
+<% @rounds.each do |round| %>
+  <h3>Round #<%= round.id %></h3>
+  <ol>
+    <% round.matches.each do |match| %>
+      <li>
+        <% person_highlight = match.person_won ? 'font-weight-bold' : '' %>
+        <% superhero_highlight = match.person_won ? '' : 'font-weight-bold' %>
+        <span class="<%= person_highlight %>">
+          <%= match.person.name %>
+        </span>
+        vs.
+        <span class="<%= superhero_highlight %>"><%= match.superhero.name %></span>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

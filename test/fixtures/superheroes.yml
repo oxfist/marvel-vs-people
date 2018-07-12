@@ -3,7 +3,9 @@
 one:
   name: MyString
   character_id: 1
+  fought: false
 
 two:
   name: MyString
-  character_id: 1
+  character_id: 2
+  fought: false
