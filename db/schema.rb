@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_180733) do
+ActiveRecord::Schema.define(version: 2018_07_12_185817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_180733) do
   create_table "matches", force: :cascade do |t|
     t.bigint "person_id", null: false
     t.bigint "superhero_id", null: false
-    t.boolean "person_won"
+    t.boolean "person_won", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "round_id", null: false
