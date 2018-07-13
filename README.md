@@ -3,4 +3,4 @@
 TODO: write instructions
 
 - Install `cron` for running the task locally
-- Run `whenever --update-crontab --set environment='development'`
+- Run `whenever --update-crontab --set environment='development'` to write the jobs
