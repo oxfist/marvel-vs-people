@@ -2,12 +2,8 @@ class PeopleController < ApplicationController
   before_action :set_person, only: %i[show edit update destroy]
 
   def revive
-    if params[:id]
-      set_person
-      @person.update(defeated: false)
-    else
-      Person.update_all(defeated: false)
-    end
+    set_person
+    @person.update(defeated: false)
 
     redirect_to people_url,
                 notice: params[:id] ? "#{@person.name} was revived" : nil

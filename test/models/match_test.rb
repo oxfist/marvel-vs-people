@@ -33,4 +33,36 @@ class MatchTest < ActiveSupport::TestCase
     @match.round = nil
     refute @match.valid?
   end
+
+  test 'should create a match' do
+    assert_difference 'Match.count' do
+      run_standard_match
+    end
+  end
+
+  test 'should update person according to match results' do
+    people(:one).update(defeated: false)
+
+    # Force person loss.
+    Random.stub(:rand, 0.4) do
+      run_standard_match
+      assert people(:one).defeated?
+    end
+  end
+
+  test 'should always update superhero after a match' do
+    superheroes(:one).update(fought: false)
+    run_standard_match
+    assert superheroes(:one).fought?
+  end
+
+  private
+
+  def run_standard_match
+    Match.start(
+      person: people(:one),
+      superhero: superheroes(:one),
+      round: rounds(:one)
+    )
+  end
 end

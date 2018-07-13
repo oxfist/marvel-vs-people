@@ -4,42 +4,17 @@ class RoundsController < ApplicationController
   end
 
   def create
-    superhero = random_superhero
-    person = random_person
-    round = Round.new
-    until person.blank? || person.defeated? || superhero.blank?
-      round.save
-      person_won = Random.rand >= 0.5
-
-      Match.create!(
-        person: person,
-        superhero: superhero,
-        round: round,
-        person_won: person_won
-      )
-
-      superhero.fought = true
-      superhero.save
-
-      unless person_won
-        person.defeated = true
-        person.save
-        break
-      end
-
-      superhero = random_superhero
-    end
-    redirect_to action: :index
+    round = Round.run_round
+    redirect_to rounds_url, notice: round_finished_msg(round)
   end
 
   private
 
-  # TODO: move method to each respective model
-  def random_person
-    Person.where(defeated: false).order(Arel.sql('random()')).limit(1).first
-  end
-
-  def random_superhero
-    Superhero.where(fought: false).order(Arel.sql('random()')).limit(1).first
+  def round_finished_msg(round)
+    if !round.persisted?
+      'No fighters were available.'
+    else
+      "Round finished with #{round.winner.name} winning."
+    end
   end
 end

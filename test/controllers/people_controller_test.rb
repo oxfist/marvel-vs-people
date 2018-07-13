@@ -70,13 +70,4 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     @person.reload
     refute @person.defeated
   end
-
-  test 'should revive all people' do
-    Person.update_all(defeated: true)
-    assert_equal 0, Person.where(defeated: false).count
-
-    post revive_people_url
-
-    assert_equal 0, Person.where(defeated: true).count
-  end
 end

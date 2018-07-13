@@ -8,4 +8,8 @@ class Person < ApplicationRecord
   validates :quote, presence: true
 
   alias opponents superheroes
+
+  def self.random_fighter
+    Person.where(defeated: false).order(Arel.sql('random()')).limit(1).first
+  end
 end

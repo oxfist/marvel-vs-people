@@ -6,4 +6,8 @@ class Superhero < ApplicationRecord
   validates :character_id, presence: true
 
   alias opponents people
+
+  def self.random_fighter
+    Superhero.where(fought: false).order(Arel.sql('random()')).limit(1).first
+  end
 end

@@ -33,4 +33,14 @@ class PersonTest < ActiveSupport::TestCase
     @person.quote = nil
     refute @person.valid?
   end
+
+  test 'should get a random fighter if available' do
+    Person.update_all(defeated: false)
+    refute_nil Person.random_fighter
+  end
+
+  test 'should get nil if no fighters are available' do
+    Person.update_all(defeated: true)
+    assert_nil Person.random_fighter
+  end
 end
