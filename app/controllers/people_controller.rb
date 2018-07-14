@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
     @person.update(defeated: false)
 
     redirect_to people_url,
-                notice: params[:id] ? "#{@person.name} was revived" : nil
+                notice: params[:id] ? "#{@person.name} was revived." : nil
   end
 
   # GET /people

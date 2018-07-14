@@ -9,6 +9,23 @@ class Person < ApplicationRecord
 
   alias opponents superheroes
 
+  def score(starting_at)
+    {
+      name: name,
+      wins: wins = matches.where(
+        [
+          "created_at >= '%s' AND person_won = %s", starting_at, true
+        ]
+      ).count,
+      losses: losses = (matches.where(
+        [
+          "created_at >= '%s'", starting_at
+        ]
+      ).count - wins),
+      score: wins - losses
+    }
+  end
+
   def self.random_fighter
     Person.where(defeated: false).order(Arel.sql('random()')).limit(1).first
   end

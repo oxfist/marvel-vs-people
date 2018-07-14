@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pb-3">Ranking</h1>
+
+<%= button_to 'Reset',
+              ranking_reset_path,
+              class: 'btn btn-primary mb-3',
+              data: {
+                confirm: 'This will reset the ranking for today. Are you sure?'
+              }
+%>
+
+<table class="table">
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score[:name] %></td>
+        <td><%= "#{score[:wins]}-#{score[:losses]}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
