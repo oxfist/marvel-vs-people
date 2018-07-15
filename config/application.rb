@@ -16,6 +16,8 @@ module MarvelVsPeople
     config.marvel_client = marvel_client
 
     config.after_initialize do
+      # Force loading of Ranking model.
+      require 'ranking'
       unless defined?(Ranking).nil?
         Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
       end
