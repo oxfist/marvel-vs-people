@@ -16,7 +16,9 @@ module MarvelVsPeople
     config.marvel_client = marvel_client
 
     config.after_initialize do
-      Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
+      unless defined?(Ranking).nil?
+        Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
+      end
     end
   end
 end
