@@ -15,6 +15,8 @@ module MarvelVsPeople
     marvel_client.private_key = '65be946f16213b54e48025d9cc45e3f335d7541b'
     config.marvel_client = marvel_client
 
-    config.ranking_starting_at = Time.current.midnight
+    config.after_initialize do
+      Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
+    end
   end
 end

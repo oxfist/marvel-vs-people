@@ -8,3 +8,8 @@ desc 'Run a round'
 task run_round: :environment do
   Round.run_round
 end
+
+desc 'Reset ranking'
+task ranking_reset: :environment do
+  Ranking.update
+end

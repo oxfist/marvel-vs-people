@@ -7,7 +7,7 @@ class RankingControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should reset ranking' do
-    assert_changes 'MarvelVsPeople::Application.config.ranking_starting_at' do
+    assert_changes 'Ranking.starting_at' do
       post ranking_reset_url
       assert_redirected_to root_url
       follow_redirect!

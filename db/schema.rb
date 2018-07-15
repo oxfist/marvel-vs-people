@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_185817) do
+ActiveRecord::Schema.define(version: 2018_07_14_234237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 2018_07_12_185817) do
     t.datetime "updated_at", null: false
     t.string "special_ability", null: false
     t.boolean "defeated", default: false, null: false
+  end
+
+  create_table "rankings", force: :cascade do |t|
+    t.datetime "starting_at", null: false
   end
 
   create_table "rounds", force: :cascade do |t|
