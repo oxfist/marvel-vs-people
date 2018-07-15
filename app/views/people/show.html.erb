@@ -21,8 +21,8 @@
 </p>
 
 <h4>Matches</h4>
-<ol>
-  <% @person.matches.includes(:superhero).each do |match| %>
+<ul>
+  <% @person.matches.includes(:superhero).order(id: :desc).each do |match| %>
     <li>
       <% person_highlight = match.person_won ? 'font-weight-bold' : '' %>
       <% superhero_highlight = match.person_won ? '' : 'font-weight-bold' %>
@@ -34,7 +34,7 @@
       <span>(<%= match.created_at.strftime('%d-%m-%Y') %>)</span>
     </li>
   <% end %>
-</ol>
+</ul>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
