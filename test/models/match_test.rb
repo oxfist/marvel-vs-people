@@ -56,6 +56,13 @@ class MatchTest < ActiveSupport::TestCase
     assert superheroes(:one).fought?
   end
 
+  test 'should destroy round if there are no matches left' do
+    match = matches(:three)
+    round = match.round
+    match.destroy
+    assert round.destroyed?
+  end
+
   private
 
   def run_standard_match

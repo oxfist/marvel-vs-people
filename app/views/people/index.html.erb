@@ -24,14 +24,18 @@
         <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
         <td>
           <% if person.defeated? %>
-            <%= link_to 'Revive', revive_people_path(person), method: :post, data: { confirm: "Revive #{person.name}?" } %>
+            <%= link_to 'Revive', revive_people_path(person), method: :post,
+                        data: { confirm: "Revive #{person.name}?" } %>
           <% else %>
             <span>&nbsp;</span>
           <% end %>
         </td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Destroy', person, method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

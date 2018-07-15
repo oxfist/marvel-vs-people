@@ -48,6 +48,7 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'reviving a Person' do
+    people(:one).update(defeated: true)
     visit people_url
     page.accept_confirm do
       click_on 'Revive', match: :first

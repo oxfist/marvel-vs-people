@@ -46,9 +46,9 @@ class PersonTest < ActiveSupport::TestCase
 
   test 'should return score from matches after the specified date' do
     person_score = people(:one).score(Time.current.midnight)
-    assert_equal 0, person_score[:wins]
+    assert_equal 1, person_score[:wins]
     assert_equal 1, person_score[:losses]
-    assert_equal -1, person_score[:score]
+    assert_equal 0, person_score[:score]
     assert_equal people(:one).name, person_score[:name]
   end
 
@@ -59,5 +59,14 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal 0, person_score[:losses]
     assert_equal 0, person_score[:score]
     assert_equal people(:one).name, person_score[:name]
+  end
+
+  test 'should delete associated matches when person is destroyed' do
+    person = people(:two)
+    matches = person.matches
+    person.destroy
+    matches.each do |match|
+      assert match.destroyed?
+    end
   end
 end

@@ -31,4 +31,13 @@ class SuperheroTest < ActiveSupport::TestCase
     Superhero.update_all(fought: true)
     assert_nil Superhero.random_fighter
   end
+
+  test 'should delete associated matches when superhero is destroyed' do
+    superhero = superheroes(:one)
+    matches = superhero.matches
+    superhero.destroy
+    matches.each do |match|
+      assert match.destroyed?
+    end
+  end
 end

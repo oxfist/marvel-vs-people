@@ -11,3 +11,9 @@ two:
   superhero: two
   person_won: false
   round: one
+
+three:
+  person: one
+  superhero: two
+  person_won: true
+  round: two

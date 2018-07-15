@@ -5,6 +5,12 @@ class Match < ApplicationRecord
 
   validates :person_won, exclusion: { in: [nil] }
 
+  after_destroy :destroy_orphaned_round
+
+  def destroy_orphaned_round
+    round.destroy if round.matches.empty?
+  end
+
   class << self
     def start(args)
       person_won = winning_criterion
