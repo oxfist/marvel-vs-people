@@ -22,7 +22,9 @@
         <td><%= person.quote %></td>
         <td><%= person.special_ability %></td>
         <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
-        <td><%= link_to 'Revive', revive_people_path(person), method: :post, data: { confirm: "Revive #{person.name}?" } %></td>
+        <% if person.defeated? %>
+          <td><%= link_to 'Revive', revive_people_path(person), method: :post, data: { confirm: "Revive #{person.name}?" } %></td>
+        <% end %>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

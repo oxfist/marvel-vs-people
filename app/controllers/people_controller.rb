@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
 
   def revive
     set_person
-    @person.update(defeated: false)
+    @person.update(defeated: false) if @person.defeated?
 
     redirect_to people_url,
                 notice: params[:id] ? "#{@person.name} was revived." : nil
