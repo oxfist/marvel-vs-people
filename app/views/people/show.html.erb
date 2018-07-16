@@ -1,40 +1,28 @@
 <%= alert(notice, 'info') if notice %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+<h2><%= @person.name %></h2>
 
-<p>
-  <strong>Occupation:</strong>
-  <%= @person.occupation %>
-</p>
+<table class="table mb-5">
+  <tbody>
+    <tr>
+      <td class="col-md-3 text-muted">Occupation</td>
+      <td><%= @person.occupation %></td>
+    </tr>
+    <tr>
+      <td class="col-md-3 text-muted">Quote</td>
+      <td><%= @person.quote %></td>
+    </tr>
+    <tr>
+      <td class="col-md-3 text-muted">Special Ability</td>
+      <td><%= @person.special_ability %></td>
+    </tr>
+    <tr>
+      <td class="col-md-3 text-muted">Matches</td>
+      <td><%= render 'people/matches' %></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Quote:</strong>
-  <%= @person.quote %>
-</p>
-
-<p>
-  <strong>Special Ability:</strong>
-  <%= @person.special_ability %>
-</p>
-
-<h4>Matches</h4>
-<ul>
-  <% @person.matches.includes(:superhero).order(id: :desc).each do |match| %>
-    <li>
-      <% person_highlight = match.person_won ? 'font-weight-bold' : '' %>
-      <% superhero_highlight = match.person_won ? '' : 'font-weight-bold' %>
-      <span class="<%= person_highlight %>">
-        <%= @person.name %>
-      </span>
-      vs.
-      <span class="<%= superhero_highlight %>"><%= match.superhero.name %></span>
-      <span>(<%= match.created_at.strftime('%d-%m-%Y') %>)</span>
-    </li>
-  <% end %>
-</ul>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

@@ -1,0 +1,14 @@
+<ul id="matches">
+  <% @person.matches.includes(:superhero).order(id: :desc).limit(10).each do |match| %>
+    <li>
+      <% person_highlight = match.person_won ? 'font-weight-bold' : '' %>
+      <% superhero_highlight = match.person_won ? '' : 'font-weight-bold' %>
+      <span class="<%= person_highlight %>">
+        <%= @person.name %>
+      </span>
+      vs.
+      <span class="<%= superhero_highlight %>"><%= match.superhero.name %></span>
+      <span>(<%= match.created_at.strftime('%d-%m-%Y') %>)</span>
+    </li>
+  <% end %>
+</ul>

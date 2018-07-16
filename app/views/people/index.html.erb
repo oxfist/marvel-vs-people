@@ -1,7 +1,7 @@
 <%= alert(notice, 'info') if notice %>
 
-<%= button_to 'New Person', new_person_path, method: :get,
-              class: 'btn btn-outline-primary float-right' %>
+<%= link_to 'New Person', new_person_path,
+            class: 'btn btn-outline-primary float-right' %>
 
 <h1 class="pb-3">People</h1>
 
@@ -45,5 +45,5 @@
 </table>
 <%= paginate @people %>
 
-<%= button_to 'New Person', new_person_path, method: :get,
-              class: 'btn btn-outline-primary float-right' %>
+<%= link_to 'New Person', new_person_path,
+            class: 'btn btn-outline-primary float-right' %>
