@@ -1,25 +1,27 @@
-<h1 class="pb-3">Superheroes</h1>
+<div class="pb-3">
+  <h1 class="pb-3">Superheroes</h1>
 
-<table class="table mb-5">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Times fought</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @superheroes.each do |superhero| %>
+  <table class="table mb-5">
+    <thead>
       <tr>
-        <td><%= superhero.name %></td>
-        <td><%= superhero.fought? ? 'Fought' : 'Ready' %></td>
-        <td><%= superhero.matches.count %></td>
-        <td><%= link_to 'Show', superheroes_show_path(character_id: superhero.character_id) %></td>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Times fought</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= paginate @superheroes %>
+    <tbody>
+      <% @superheroes.each do |superhero| %>
+        <tr>
+          <td><%= superhero.name %></td>
+          <td><%= superhero.fought? ? 'Fought' : 'Ready' %></td>
+          <td><%= superhero.matches.count %></td>
+          <td><%= link_to 'Show', superheroes_show_path(character_id: superhero.character_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @superheroes %>
+</div>

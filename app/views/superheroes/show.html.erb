@@ -1,26 +1,63 @@
-<h2><%= @superhero.name %></h2>
-<img class="img-thumbnail w-25"
-     src=<%= "#{@superhero.thumbnail.path}.#{@superhero.thumbnail.extension}" %>
-/>
-<p><%= @superhero.description %></p>
+<div class="jumbotron container">
+  <%= link_to 'Full profile', @superhero.urls.second.url,
+              class: 'btn btn-outline-primary float-right' %>
+  <h2 class="display-4" id="superhero-name"><%= @superhero.name %></h2>
+  <hr class="my-4">
+  <div class="row mx-2 align-items-center pb-4 d-flex flex-wrap">
+    <div class="col-5" id="superhero-thumbnail">
+      <img class="img-thumbnail"
+           src=<%= "#{@superhero.thumbnail.path}.#{@superhero.thumbnail.extension}" %>
+      />
+    </div>
+    <div class="col-7">
+      <p><%= @superhero.description %></p>
+    </div>
+  </div>
 
-<h2>Comics</h2>
-<ol>
-<% @superhero.comics.items.each do |comic| %>
-  <li><%= comic.name %></li>
-<% end %>
-</ol>
-
-<h2>Series</h2>
-<ol>
-<% @superhero.series.items.each do |series| %>
-  <li><%= series.name %></li>
-<% end %>
-</ol>
-
-<h2>Events</h2>
-<ol>
-<% @superhero.events.items.each do |event| %>
-  <li><%= event.name %></li>
-<% end %>
-</ol>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href="#comics" data-toggle="tab" role="tab"
+         id="comics-tab" aria-controls="comics" aria-selected="true">
+        Comics
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#series" data-toggle="tab" role="tab"
+         id="series-tab" aria-controls="series" aria-selected="true">
+        Series
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#events" data-toggle="tab" role="tab"
+         id="events-tab" aria-controls="events" aria-selected="true">
+        Events
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content pt-3" id="superhero-data">
+    <div class="tab-pane fade"
+         id="comics" role="tabpanel" aria-labelledby="comics-tab">
+      <ol>
+        <% @superhero.comics.items.each do |comic| %>
+          <li><%= comic.name %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="tab-pane fade"
+         id="series" role="tabpanel" aria-labelledby="series-tab">
+      <ol>
+        <% @superhero.series.items.each do |series| %>
+          <li><%= series.name %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="tab-pane fade"
+         id="events" role="tabpanel" aria-labelledby="events-tab">
+      <ol>
+        <% @superhero.events.items.each do |event| %>
+          <li><%= event.name %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

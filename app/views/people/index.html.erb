@@ -1,49 +1,51 @@
-<%= alert(notice, 'info') if notice %>
+<div class="pb-5">
+  <%= alert(notice, 'info') if notice %>
 
-<%= link_to 'New Person', new_person_path,
-            class: 'btn btn-outline-primary float-right' %>
+  <%= link_to 'New Person', new_person_path,
+              class: 'btn btn-outline-primary float-right' %>
 
-<h1 class="pb-3">People</h1>
+  <h1 class="pb-3">People</h1>
 
-<%= paginate @people %>
-<table class="table mb-5">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Occupation</th>
-      <th>Quote</th>
-      <th>Special Ability</th>
-      <th>Status</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @people.each do |person| %>
+  <%= paginate @people %>
+  <table class="table mb-5">
+    <thead>
       <tr>
-        <td class="col-md-2"><%= person.name %></td>
-        <td><%= person.occupation %></td>
-        <td><%= person.quote %></td>
-        <td class="col-md-2"><%= person.special_ability %></td>
-        <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
-        <td>
-          <% if person.defeated? %>
-            <%= link_to 'Revive', revive_people_path(person), method: :post,
-                        data: { confirm: "Revive #{person.name}?" } %>
-          <% else %>
-            <span>&nbsp;</span>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td>
-          <%= link_to 'Destroy', person, method: :delete,
-                      data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>Name</th>
+        <th>Occupation</th>
+        <th>Quote</th>
+        <th>Special Ability</th>
+        <th>Status</th>
+        <th colspan="4"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @people %>
+    </thead>
+    <tbody>
+      <% @people.each do |person| %>
+        <tr>
+          <td class="col-md-2"><%= person.name %></td>
+          <td><%= person.occupation %></td>
+          <td><%= person.quote %></td>
+          <td class="col-md-2"><%= person.special_ability %></td>
+          <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
+          <td>
+            <% if person.defeated? %>
+              <%= link_to 'Revive', revive_people_path(person), method: :post,
+                          data: { confirm: "Revive #{person.name}?" } %>
+            <% else %>
+              <span>&nbsp;</span>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', person %></td>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td>
+            <%= link_to 'Destroy', person, method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @people %>
 
-<%= link_to 'New Person', new_person_path,
-            class: 'btn btn-outline-primary float-right' %>
+  <%= link_to 'New Person', new_person_path,
+              class: 'btn btn-outline-primary float-right' %>
+</div>
