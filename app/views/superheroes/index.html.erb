@@ -1,11 +1,11 @@
 <h1 class="pb-3">Superheroes</h1>
 
-<table class="table">
+<table class="table mb-5">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Character ID</th>
       <th>Status</th>
+      <th>Times fought</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -14,10 +14,12 @@
     <% @superheroes.each do |superhero| %>
       <tr>
         <td><%= superhero.name %></td>
-        <td><%= superhero.character_id %></td>
         <td><%= superhero.fought? ? 'Fought' : 'Ready' %></td>
+        <td><%= superhero.matches.count %></td>
         <td><%= link_to 'Show', superheroes_show_path(character_id: superhero.character_id) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @superheroes %>

@@ -1,1 +1,36 @@
 @import 'bootstrap';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 80px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Bangers';
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  width: 100%;
+}
+
+#footer {
+  border-top: 1px #e1e4e8 solid;
+}
+
+#ranking {
+  max-width: 680px;
+  margin: 0 auto;
+}

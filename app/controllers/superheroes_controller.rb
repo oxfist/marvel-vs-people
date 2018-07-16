@@ -1,6 +1,6 @@
 class SuperheroesController < ApplicationController
   def index
-    @superheroes = Superhero.all
+    @superheroes = Superhero.page(params[:page])
   end
 
   def show

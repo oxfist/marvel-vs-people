@@ -1,8 +1,12 @@
 <%= alert(notice, 'info') if notice %>
 
+<%= button_to 'New Person', new_person_path, method: :get,
+              class: 'btn btn-outline-primary float-right' %>
+
 <h1 class="pb-3">People</h1>
 
-<table class="table">
+<%= paginate @people %>
+<table class="table mb-5">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,14 +17,13 @@
       <th colspan="4"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person.name %></td>
+        <td class="col-md-2"><%= person.name %></td>
         <td><%= person.occupation %></td>
         <td><%= person.quote %></td>
-        <td><%= person.special_ability %></td>
+        <td class="col-md-2"><%= person.special_ability %></td>
         <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
         <td>
           <% if person.defeated? %>
@@ -40,7 +43,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @people %>
 
-<br>
-
-<%= link_to 'New Person', new_person_path %>
+<%= button_to 'New Person', new_person_path, method: :get,
+              class: 'btn btn-outline-primary float-right' %>

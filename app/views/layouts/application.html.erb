@@ -8,12 +8,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
   </head>
 
   <body>
     <%= render 'layouts/navigation/navbar' %>
-    <div class="container w-50 pt-5">
+    <main role="main" class="container pt-3 pb-5">
       <%= yield %>
-    </div>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
