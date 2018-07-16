@@ -1,6 +1,8 @@
 class Round < ApplicationRecord
   has_many :matches
 
+  paginates_per 10
+
   def winner
     matches.last.person_won? ? matches.last.person : matches.last.superhero
   end

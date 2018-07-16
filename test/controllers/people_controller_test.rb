@@ -28,7 +28,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_redirected_to person_url(Person.last)
+    assert_redirected_to people_url
   end
 
   test 'should show person' do

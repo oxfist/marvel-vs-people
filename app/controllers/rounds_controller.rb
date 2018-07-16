@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   def index
-    @rounds = Round.order(id: :desc)
+    @rounds = Round.order(id: :desc).page(params[:page])
   end
 
   def create

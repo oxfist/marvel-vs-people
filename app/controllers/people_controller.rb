@@ -71,7 +71,6 @@ class PeopleController < ApplicationController
     @person.destroy
     respond_to do |format|
       format.html do
-        index_page = CGI.parse(URI(request.referrer).query.to_s)['page'].first
         redirect_to people_url(page: index_page),
                     notice: 'Person was successfully destroyed.'
       end
@@ -81,14 +80,18 @@ class PeopleController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_person
-    @person = Person.find(params[:id])
+  def index_page
+    CGI.parse(URI(request.referrer || '').query.to_s)['page'].first
   end
 
   # Never trust parameters from the scary internet, only allow the white list
   # through.
   def person_params
     params.require(:person).permit(:name, :occupation, :quote, :special_ability)
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_person
+    @person = Person.find(params[:id])
   end
 end

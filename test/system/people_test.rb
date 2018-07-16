@@ -12,7 +12,7 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'creating a Person' do
     visit people_url
-    click_on 'New Person'
+    click_on 'New Person', match: :first
 
     fill_in 'Name', with: @person.name
     fill_in 'Occupation', with: @person.occupation
@@ -21,7 +21,6 @@ class PeopleTest < ApplicationSystemTestCase
     click_on 'Create Person'
 
     assert_text 'Person was successfully created'
-    click_on 'Back'
   end
 
   test 'updating a Person' do

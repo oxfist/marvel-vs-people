@@ -16,7 +16,8 @@ class ActiveSupport::TestCase
       thumbnail: { path: '/favicon', extension: 'ico' },
       comics: { items: [{ name: 'Best comic ever' }] },
       series: { items: [{ name: 'Best series ever' }] },
-      events: { items: [{ name: 'Best event ever' }] }
+      events: { items: [{ name: 'Best event ever' }] },
+      urls: [{ url: '' }] * 3
     )
   ].freeze
 end
