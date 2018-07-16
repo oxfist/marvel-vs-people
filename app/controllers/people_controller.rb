@@ -35,7 +35,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html do
-          redirect_to @person, notice: 'Person was successfully created.'
+          redirect_to people_url, notice: 'Person was successfully created.'
         end
         format.json { render :show, status: :created, location: @person }
       else
@@ -71,7 +71,9 @@ class PeopleController < ApplicationController
     @person.destroy
     respond_to do |format|
       format.html do
-        redirect_to people_url, notice: 'Person was successfully destroyed.'
+        index_page = CGI.parse(URI(request.referrer).query.to_s)['page'].first
+        redirect_to people_url(page: index_page),
+                    notice: 'Person was successfully destroyed.'
       end
       format.json { head :no_content }
     end
