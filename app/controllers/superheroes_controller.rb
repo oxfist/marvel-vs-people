@@ -1,6 +1,6 @@
 class SuperheroesController < ApplicationController
   def index
-    @superheroes = Superhero.page(params[:page])
+    @superheroes = Superhero.order(name: :asc).page(params[:page])
   end
 
   def show

@@ -1,74 +1,50 @@
 Match.delete_all
 Person.delete_all
 Round.delete_all
-Superhero.delete_all
 
-Person.create!(
+def random_name
+  name = ''
+  name << "#{Faker::Name.prefix} " if Random.rand >= 0.5
+  name << Faker::Name.name
+  name << " #{Faker::Name.suffix}" if Random.rand >= 0.5
+  name
+end
+
+def random_quote
   [
-    {
-      name: 'John Doe',
-      occupation: 'Carpenter',
-      special_ability: 'Fast hammering',
-      quote: 'I\'ll chop you like a tree'
-    },
-    {
-      name: 'Alan Turing',
-      occupation: 'Mathematics professor',
-      special_ability: 'Code breaker',
-      quote: 'Sometimes it is the people no one can imagine anything of who '\
-             'do the things no one can imagine'
-    }
-  ]
-)
+    Faker::Movie.quote,
+    Faker::Seinfeld.quote,
+    Faker::MichaelScott.quote,
+    Faker::WorldOfWarcraft.quote,
+    Faker::Matz.quote,
+    Faker::Dota.quote,
+    Faker::Lebowski.quote,
+    Faker::Friends.quote,
+    Faker::GreekPhilosophers.quote,
+    Faker::Yoda.quote,
+    Faker::StarWars.quote,
+    Faker::Witcher.quote
+  ].sample
+end
 
-Superhero.create!(
+def random_ability
   [
-    {
-      name: 'Thanos',
-      character_id: 1009652
-    },
-    {
-      name: 'Spider-Man',
-      character_id: 1009610
-    }
-  ]
-)
+    Faker::Pokemon.move,
+    Faker::Job.key_skill
+  ].sample
+end
 
-Round.create!
-Round.create!
-Round.create!
-
-Match.create!(
-  [
+300.times do
+  Person.create!(
     {
-      round: Round.first,
-      person: Person.first,
-      superhero: Superhero.first,
-      person_won: false
-    },
-    {
-      round: Round.second,
-      person: Person.second,
-      superhero: Superhero.second,
-      person_won: true
-    },
-    {
-      round: Round.second,
-      person: Person.second,
-      superhero: Superhero.first,
-      person_won: false
-    },
-    {
-      round: Round.third,
-      person: Person.first,
-      superhero: Superhero.first,
-      person_won: true
-    },
-    {
-      round: Round.third,
-      person: Person.first,
-      superhero: Superhero.second,
-      person_won: true
+      name: random_name,
+      occupation: Faker::Job.title,
+      special_ability: random_ability,
+      quote: random_quote
     }
-  ]
-)
+  )
+end
+
+200.times do
+  Round.run_round
+end

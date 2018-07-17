@@ -15,11 +15,24 @@ module MarvelVsPeople
     marvel_client.private_key = '65be946f16213b54e48025d9cc45e3f335d7541b'
     config.marvel_client = marvel_client
 
+    def database_exists?
+      ActiveRecord::Base.connection
+    rescue ActiveRecord::NoDatabaseError
+      false
+    else
+      true
+    end
+
+    # The code below is intended to run when the server starts to update the
+    # starting_at value from which the ranking is determined.
     config.after_initialize do
       # Force loading of Ranking model.
-      require 'ranking'
-      unless defined?(Ranking).nil?
-        Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
+      if database_exists? &&
+         ActiveRecord::Base.connection.tables.include?('rankings')
+        require 'ranking'
+        unless defined?(Ranking).nil?
+          Ranking.update(Time.current.in_time_zone('America/Santiago').midnight)
+        end
       end
     end
   end
