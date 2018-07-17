@@ -1,6 +1,6 @@
-Match.delete_all
-Person.delete_all
-Round.delete_all
+Match.destroy_all
+Person.destroy_all
+Round.destroy_all
 
 def random_name
   name = ''

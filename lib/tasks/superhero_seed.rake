@@ -1,6 +1,6 @@
 desc 'Seed superheroes'
 task superheroes_seed: :environment do
-  Superhero.delete_all
+  Superhero.destroy_all
 
   Superhero.create!(
     [
