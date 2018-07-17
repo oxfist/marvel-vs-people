@@ -25,7 +25,7 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'updating a Person' do
     visit people_url
-    click_on 'Edit', match: :first
+    click_link 'Edit', match: :first
 
     fill_in 'Name', with: @person.name
     fill_in 'Occupation', with: @person.occupation
@@ -39,9 +39,8 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'destroying a Person' do
     visit people_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
+    click_link 'Delete', match: :first
+    click_on 'Confirm', match: :first
 
     assert_text 'Person was successfully destroyed'
   end
@@ -49,9 +48,8 @@ class PeopleTest < ApplicationSystemTestCase
   test 'reviving a Person' do
     people(:one).update(defeated: true)
     visit people_url
-    page.accept_confirm do
-      click_on 'Revive', match: :first
-    end
+    click_link 'Revive', match: :first
+    click_on 'Confirm', match: :first
 
     assert_text(/.*was revived/)
   end

@@ -6,6 +6,6 @@ one:
   fought: false
 
 two:
-  name: MyString
+  name: YourString
   character_id: 2
   fought: false

@@ -4,7 +4,8 @@ class SuperheroesController < ApplicationController
                      Superhero.order(name: :asc).page(params[:page])
                    else
                      @search = params[:search]
-                     Superhero.where('lower(name) LIKE ?', "%#{@search}%")
+                     Superhero.where('lower(name) LIKE ?',
+                                     "%#{@search.downcase}%")
                               .order(name: :asc).page(params[:page])
                    end
   end

@@ -18,6 +18,18 @@ class SuperheroesTest < ApplicationSystemTestCase
   end
 
   test 'filtering superheroes' do
-    skip 'TODO: implement'
+    visit superheroes_url
+    fill_in 'Search', with: 'My'
+    click_on 'Search', match: :first
+    assert_text 'MyString'
+    refute_text 'YourString'
+  end
+
+  test 'empty string on filter just shows all superheroes' do
+    visit superheroes_url
+    fill_in 'Search', with: ''
+    click_on 'Search', match: :first
+    assert_text 'MyString'
+    assert_text 'YourString'
   end
 end

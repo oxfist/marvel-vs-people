@@ -8,9 +8,8 @@ class RankingTest < ApplicationSystemTestCase
 
   test 'resetting the ranking' do
     visit root_url
-    page.accept_confirm do
-      click_on 'Reset', match: :first
-    end
+    click_on 'Reset', match: :first
+    click_on 'Confirm', match: :first
 
     assert_text 'Ranking was reset.'
 

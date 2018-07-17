@@ -28,15 +28,19 @@
             <% if person.defeated? %>
               <%= link_to fa_icon('heartbeat'), revive_people_path(person),
                           data: { confirm: "This will revive #{person.name}." },
-                          method: :post %>
+                          method: :post, title: 'Revive' %>
             <% else %>
               <span>&nbsp;</span>
             <% end %>
           </td>
-          <td><%= link_to fa_icon('eye'), person %></td>
-          <td><%= link_to fa_icon('edit'), edit_person_path(person) %></td>
+          <td><%= link_to fa_icon('eye'), person, title: 'Show' %></td>
+          <td>
+            <%= link_to fa_icon('edit'), edit_person_path(person),
+                        title: 'Edit' %>
+          </td>
           <td>
             <%= link_to fa_icon('trash'), person, method: :delete,
+                        title: 'Delete',
                         data: { confirm: 'This person will be deleted.' } %>
           </td>
         </tr>
