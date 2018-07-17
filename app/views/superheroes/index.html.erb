@@ -17,7 +17,7 @@
           <td><%= superhero.name %></td>
           <td><%= superhero.fought? ? 'Fought' : 'Ready' %></td>
           <td><%= superhero.matches.count %></td>
-          <td><%= link_to 'Show', superheroes_show_path(character_id: superhero.character_id) %></td>
+          <td><%= link_to fa_icon('eye'), superheroes_show_path(character_id: superhero.character_id) %></td>
         </tr>
       <% end %>
     </tbody>

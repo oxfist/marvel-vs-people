@@ -10,7 +10,7 @@
   <table class="table mb-5">
     <thead>
       <tr>
-        <th>Name</th>
+        <th class="col-sm-3">Name</th>
         <th>Occupation</th>
         <th>Special Ability</th>
         <th>Status</th>
@@ -26,17 +26,18 @@
           <td><%= person.defeated? ? 'Defeated' : 'OK' %></td>
           <td>
             <% if person.defeated? %>
-              <%= link_to 'Revive', revive_people_path(person), method: :post,
-                          data: { confirm: "Revive #{person.name}?" } %>
+              <%= link_to fa_icon('heartbeat'), revive_people_path(person),
+                          data: { confirm: "This will revive #{person.name}." },
+                          method: :post %>
             <% else %>
               <span>&nbsp;</span>
             <% end %>
           </td>
-          <td><%= link_to 'Show', person %></td>
-          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to fa_icon('eye'), person %></td>
+          <td><%= link_to fa_icon('edit'), edit_person_path(person) %></td>
           <td>
-            <%= link_to 'Destroy', person, method: :delete,
-                        data: { confirm: 'Are you sure?' } %>
+            <%= link_to fa_icon('trash'), person, method: :delete,
+                        data: { confirm: 'This person will be deleted.' } %>
           </td>
         </tr>
       <% end %>

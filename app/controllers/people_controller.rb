@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.order(id: :asc).page(params[:page])
+    @people = Person.order(name: :asc).page(params[:page])
   end
 
   # GET /people/1
