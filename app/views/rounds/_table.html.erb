@@ -1,7 +1,7 @@
 <table class="table table-sm mb-5">
   <thead class="thead-dark">
     <tr>
-      <th class="col-sm-1 pl-3">#</th>
+      <th class="px-3">#</th>
       <th colspan="1"></th>
       <th>Winner</th>
       <th>Date</th>
@@ -23,7 +23,7 @@
       <% i = 0 %>
       <% round.matches.each do |match| %>
         <tr>
-          <td class="pl-3"><%= i += 1 %></td>
+          <td class="px-3"><%= i += 1 %></td>
           <td><%= match.person.name %> vs. <%= match.superhero.name %></td>
           <td>
             <%= match.person_won? ? match.person.name : match.superhero.name %>
