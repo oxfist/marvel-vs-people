@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <% i = 0 %>
-      <% round.matches.each do |match| %>
+      <% round.matches.order(id: :asc).each do |match| %>
         <tr>
           <td class="px-3"><%= i += 1 %></td>
           <td><%= match.person.name %> vs. <%= match.superhero.name %></td>
