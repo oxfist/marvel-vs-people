@@ -16,4 +16,12 @@ class SuperheroesControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
+
+  test 'should filter superheroes by name' do
+    skip 'TODO: implement'
+  end
+
+  test 'should not filter superheroes if search param is not present' do
+    skip 'TODO: implement'
+  end
 end

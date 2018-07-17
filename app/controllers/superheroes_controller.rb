@@ -1,6 +1,12 @@
 class SuperheroesController < ApplicationController
   def index
-    @superheroes = Superhero.order(name: :asc).page(params[:page])
+    @superheroes = if params[:search].blank?
+                     Superhero.order(name: :asc).page(params[:page])
+                   else
+                     @search = params[:search]
+                     Superhero.where('lower(name) LIKE ?', "%#{@search}%")
+                              .order(name: :asc).page(params[:page])
+                   end
   end
 
   def show

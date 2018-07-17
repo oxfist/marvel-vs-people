@@ -1,4 +1,11 @@
 <div class="pb-3">
+  <%= form_with url: superheroes_url, method: :get, local: true,
+                class: 'form-inline my-2 my-lg-0 float-right' do |f| %>
+    <%= f.text_field :search, class: 'form-control mr-sm-2', type: 'search',
+                     placeholder: 'Search', aria: { label: 'Search' },
+                     value: @search %>
+    <%= f.submit 'Search', class: 'btn btn-outline-primary' %>
+  <% end %>
   <h1 class="pb-3">Superheroes</h1>
 
   <table class="table mb-5">

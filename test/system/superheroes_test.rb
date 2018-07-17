@@ -16,4 +16,8 @@ class SuperheroesTest < ApplicationSystemTestCase
       assert_selector 'h2', text: @superhero.name
     end
   end
+
+  test 'filtering superheroes' do
+    skip 'TODO: implement'
+  end
 end
